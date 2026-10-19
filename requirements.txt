@@ -1,6 +1,7 @@
 fastapi
 uvicorn
-flask
-pytest
 sqlalchemy
+pandas
+pydantic
+python-multipart
 httpx2
