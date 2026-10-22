@@ -5,3 +5,6 @@ pandas
 pydantic
 python-multipart
 httpx2
+aiosqlite
+flake8
+pytest
