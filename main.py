@@ -2,6 +2,7 @@ from codecs import iterdecode
 import csv
 
 from fastapi import FastAPI, Depends, File, HTTPException, UploadFile
+from sqlalchemy import inspect, text
 from sqlalchemy.orm import Session
 import models
 import schemas
@@ -16,6 +17,11 @@ logging.basicConfig(
 
 # Create all tables in the database
 models.Base.metadata.create_all(bind=engine)
+
+# create_all won't add new columns to an existing table, so add price by hand
+if "price" not in [c["name"] for c in inspect(engine).get_columns("items")]:
+    with engine.begin() as conn:
+        conn.execute(text("ALTER TABLE items ADD COLUMN price FLOAT"))
 
 # Create the FastAPI application
 app = FastAPI()

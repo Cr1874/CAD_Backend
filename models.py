@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Float, Integer, String
 from database import Base
 
 
@@ -11,3 +11,4 @@ class Item(Base):
     # index=True makes searching faster for this column
     name = Column(String, index=True, unique=True)
     description = Column(String, index=True)
+    price = Column(Float, nullable=True)

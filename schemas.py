@@ -5,6 +5,7 @@ from pydantic import BaseModel
 class ItemBase(BaseModel):
     name: str
     description: str = None
+    price: float | None = None
 
 
 # Schema for creating a new item
@@ -17,4 +18,4 @@ class Item(ItemBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
