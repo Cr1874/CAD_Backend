@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Database URL for SQLite (it will create a file called test.db)
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+SQLALCHEMY_DATABASE_URL = ="postgresql+psycopg2://${db_user}:${db_pwd}@${db_host}:${db_port}"
 
 # Create the database engine
 engine = create_engine(
